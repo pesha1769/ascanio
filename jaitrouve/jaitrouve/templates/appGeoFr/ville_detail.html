@@ -1,0 +1,115 @@
+{% extends 'base.html'%}
+{% load replace_tag %}
+
+{% block title%}Detail{% endblock %}
+
+{% block head%}
+
+	{{ map.media }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class=" text-center px-4 py-5 sm:px-6" >
+
+  	<a class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-8 rounded-full" href="{% url 'update-ville' object.pk %}" >
+  	Update
+	</a>
+
+  	<a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-8 rounded-full" href="{% url 'delete-ville' object.pk %}" >
+  	Delete
+	</a>
+  </div> 
+    
+  </div>
+  <div class="border-t border-gray-200">
+    <dl>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Nom
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {{ object.nom }}
+        </dd>
+      </div>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Code
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {{ object.code }}
+        </dd>
+      </div>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Region
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {{ object.region.nom }}
+        </dd>
+      </div>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Code Region
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {{ object.codeRegion}}
+        </dd>
+      </div>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Departement
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {{ object.departement.nom }}
+        </dd>
+      </div>
+      <div class=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Code Departement
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {{ object.codeDepartement}}
+        </dd>
+      </div>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Codes Postaux
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {{ object.codesPostaux|replace_tag }}
+        </dd>
+      </div>
+            <div class=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Population
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {{ object.population }}
+        </dd>
+      </div>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Surface
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {{ object.surface }} <span>&#13217;</span>
+        </dd>
+      </div>
+            <div class=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Location
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+           {{ map.location }}
+        </dd>
+      </div>
+
+    </dl>
+  </div>
+</div>
+ 
+
+{% endblock %}

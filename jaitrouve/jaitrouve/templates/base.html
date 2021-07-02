@@ -1,0 +1,62 @@
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Fedosov Pavel" >
+	<meta name="description" content="Project de recherche des villes de France">
+    <meta name="keyword" content="">
+    <title> JaiTrouve | {% block title%}{% endblock %}</title>
+
+    {% tailwind_css %}
+
+    {% block head%}
+	{% endblock %}
+
+
+</head>
+<body>
+	<nav id="header" class="flex bg-blue-100 items-center justify-between flex-wrap bg-teal p-6">
+	  <div class="flex items-center flex-no-shrink text-white mr-6">
+	    <a href="#" class="font-semibold text-xl tracking-tight hover:text-black">JaiTrouve</a>
+	  </div>
+	  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+	    <div class="text-sm lg:flex-grow">
+	      <a href="{% url 'search' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter text-xl hover:text-white mr-4">
+	        <u>Recherche</u>
+	      </a>
+	      <a href="{% url 'all-ville' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter text-xl hover:text-white mr-4">
+	        <u>Toutes les villes</u>
+	      </a>
+	      <a href="{% url 'create-ville' %}"  class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter text-xl hover:text-white mr-4">
+	        <u>Créer une ville</u>
+	      </a>
+	      <a href="{% url 'data' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter text-xl hover:text-white mr-4">
+	        <u>Les données (script)</u>
+	      </a>
+	      <a href="{% url 'api' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter text-xl hover:text-white">
+	        <u>RESTapi</u>
+	      </a>
+	    </div>
+
+	  </div>
+	</nav>
+
+	{% block content%}
+	{% endblock %}
+
+	<nav id="footer" class="flex bg-blue-100 items-center justify-between flex-wrap bg-teal p-6 mt-8">
+	
+	  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto" >
+	    JaiTrouve © 2021 by Fedosov Pavel
+	  </div>
+
+
+	</nav>
+
+
+</body>
+	{% block scripts%}
+	{% endblock %}
+</html>

@@ -1,0 +1,65 @@
+{% extends 'base.html'%}
+{% load replace_tag %}
+
+{% block title%}Search{% endblock %}
+
+{% block head%}
+
+	{{ map.media }}
+
+{% endblock %}
+
+{% block content %}
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class=" text-center px-4 py-5 sm:px-6" >
+
+  	<form method="GET">
+        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full max-w-lg py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+         type = "text" name = "search_query" placeholder="Recherche par code postal ou nom..." class = "text-center">
+
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 m-8 rounded-full" type = "submit" class = "btn-danger btn-sm" name="results">c'est parti</button>
+
+        <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 m-8 rounded-full" type = "submit" class = "btn-danger btn-sm" name="advanced_results">sur les 50 km (ça prend du temps)</button>
+    </form> 
+
+
+
+	
+  </div> 
+    
+
+
+
+  </div>
+
+  <div class="table w-full mt-8">
+    
+    <div class="table-row">
+        <div class="table-cell bg-blue-100 border text-center px-8 py-4" >Nom</div>
+        <div class="table-cell bg-blue-100 border text-center px-8 py-4">Codes Postaux</div>
+        <div class="table-cell bg-blue-100 border text-center px-8 py-4">Region</div>
+        <div class="table-cell bg-blue-100 border text-center px-8 py-4">Departement</div>
+        <div class="table-cell bg-blue-100 border text-center px-8 py-4">Population</div>
+        <div class="table-cell bg-blue-100 border text-center px-8 py-4">Surface</div>
+      </div>
+
+      {% for city in cities %}
+      
+        <a class="table-row border hover:bg-blue-300 {{ city.css_class }}" href="{% url 'detail-ville' city.id %}">
+          <div class="table-cell text-center px-8 py-4 ">{{ city.nom }}</div>
+          <div class="table-cell text-center px-8 py-4">{{ city.codesPostaux|replace_tag }}</div>
+          <div class="table-cell text-center px-8 py-4">{{ city.Region }}</div>
+          <div class="table-cell text-center px-8 py-4">{{ city.Departement }}</div>
+          <div class="table-cell text-center px-8 py-4">{{ city.population }}</div>
+          <div class="table-cell text-center px-8 py-4">{{ city.surface }}</div>
+        </a>
+
+        <hr/>
+        {% empty %}
+        Pas de villes, va en chercher une
+        {% endfor %}
+  </div>
+
+
+{% endblock %}

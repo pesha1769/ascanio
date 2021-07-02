@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+
+{% block title%}All{% endblock %}
+
+{% block head%}
+
+	{{ form.media }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="table w-full mt-8">
+  
+
+	<div class="table-row">
+      <div class="table-cell bg-blue-100 border text-center px-8 py-4" >Nom</div>
+      <div class="table-cell bg-blue-100 border text-center px-8 py-4">Code</div>
+      <div class="table-cell bg-blue-100 border text-center px-8 py-4">Code Region</div>
+      <div class="table-cell bg-blue-100 border text-center px-8 py-4">Code Departement</div>
+    </div>
+
+	  {% for object in object_list %}
+
+	  
+		<a class="table-row border hover:bg-blue-300" href="{% url 'detail-ville' object.pk %}">
+	      <div class="table-cell text-center px-8 py-4 ">{{ object.nom }}</div>
+	      <div class="table-cell text-center px-8 py-4">{{ object.code }}</div>
+	      <div class="table-cell text-center px-8 py-4">{{ object.codeRegion }}</div>
+	      <div class="table-cell text-center px-8 py-4">{{ object.codeDepartement }}</div>
+	    </a>
+
+	    <hr/>
+	    {% empty %}
+	    <li>No objects yet.</li>
+	    {% endfor %}
+</div>
+
+<div class="lex bg-blue-100 items-center text-center " >
+
+	{% if page_obj.paginator.num_pages > 1 %}
+
+	    {% if page_obj.has_previous %}
+
+	        <a href="?page={{ page_obj.previous_page_number }} " class="hover:text-white"> <u>Previous</u></a>
+
+	    {% endif %}
+
+	    <span>page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+	    {% if page_obj.has_next %}
+
+	        <a href="?page={{ page_obj.next_page_number }}" class="hover:text-white"> <u>Next</u> </a>
+
+	    {% endif %}
+
+	{% endif %}
+
+</div>
+
+
+
+{% endblock %}

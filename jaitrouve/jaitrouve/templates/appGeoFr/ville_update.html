@@ -1,0 +1,137 @@
+{% extends 'base.html'%}
+
+{% block title%}Update{% endblock %}
+
+{% block head%}
+
+	{{ form.media }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="text-center px-4 py-5 sm:px-6" >
+	<a class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 mx-8 rounded-full" href="{% url 'detail-ville' object.pk %}" >
+	Cancel
+	</a>
+</div> 
+
+	<form class="w-full max-w-lg" method="post">
+	    {% csrf_token %}
+        <div class="md:flex md:items-center mb-4">
+        	{% if form.region.errors %}
+                {{ form.region.errors }}
+            {% endif %}
+		    <div class="md:w-1/3">
+		      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+		        Region
+		      </label>
+		    </div>
+		    <div class="md:w-2/3">
+				{{ form.region }}
+		    </div>
+		</div>	
+
+        <div class="md:flex md:items-center mb-4">
+        	{% if form.departement.errors %}
+                {{ form.departement.errors }}
+            {% endif %}
+		    <div class="md:w-1/3">
+		      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+		        Departement
+		      </label>
+		    </div>
+		    <div class="md:w-2/3">
+				{{ form.departement }}
+		    </div>
+		</div>
+
+
+        <div class="md:flex md:items-center mb-4">
+        	{% if form.nom.errors %}
+                {{ form.nom.errors }}
+            {% endif %}
+		    <div class="md:w-1/3">
+		      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+		        Nom
+		      </label>
+		    </div>
+		    <div class="md:w-2/3">
+				{{ form.nom }}
+		    </div>
+		</div>
+
+        <div class="md:flex md:items-center mb-4">
+        	{% if form.code.errors %}
+                {{ form.code.errors }}
+            {% endif %}
+		    <div class="md:w-1/3">
+		      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+		        Code
+		      </label>
+		    </div>
+		    <div class="md:w-2/3">
+				{{ form.code }}
+		    </div>
+		</div>	
+
+        <div class="md:flex md:items-center mb-4">
+        	{% if form.codesPostaux.errors %}
+                {{ form.codesPostaux.errors }}
+            {% endif %}
+		    <div class="md:w-1/3">
+		      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+		        Codes Postaux
+		      </label>
+		    </div>
+		    <div class="md:w-2/3">
+				{{ form.codesPostaux }}
+		    </div>
+		</div>
+
+        <div class="md:flex md:items-center mb-4">
+        	{% if form.surface.errors %}
+                {{ form.surface.errors }}
+            {% endif %}
+		    <div class="md:w-1/3">
+		      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+		        Surface
+		      </label>
+		    </div>
+		    <div class="md:w-2/3">
+				{{ form.surface }}
+		    </div>
+		</div>	
+
+        <div class="md:flex md:items-center mb-4">
+        	{% if form.population.errors %}
+                {{ form.population.errors }}
+            {% endif %}
+		    <div class="md:w-1/3">
+		      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+		        Population
+		      </label>
+		    </div>
+		    <div class="md:w-2/3">
+				{{ form.population }}
+		    </div>
+		</div>
+
+        <div class="md:flex md:items-center mb-4">
+        	{% if form.location.errors %}
+                {{ form.location.errors }}
+            {% endif %}
+		    <div class="md:w-1/3">
+		      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+		        Location
+		      </label>
+		    </div>
+		    <div class="md:w-2/3">
+				{{ form.location }}
+		    </div>
+		</div>	
+
+	    <input class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 mx-8 rounded-full" type="submit" value="Save">
+	</form>
+
+{% endblock %}

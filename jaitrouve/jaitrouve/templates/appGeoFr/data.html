@@ -1,0 +1,108 @@
+{% extends 'base.html'%}
+
+{% block title%}Data{% endblock %}
+
+{% block content %}
+
+<div class = "container">
+  <br>
+  <div class = "text-center text-2xl">Data from geo.api.gouv.fr</div> 
+  <br>
+  <form class="text-right" method="GET" >
+    <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit" value="Update database" name="_update" >
+  </form> 
+</div> 
+
+
+<div class="text-2xl">Region:</div>
+<div class="table w-full mt-8">
+
+  <div class="table-row">
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4" >Nom</div>
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4">Code</div>
+  </div>
+
+  {% for region in all_regions %}
+    <div class="table-row border hover:bg-blue-300">
+      <div class="table-cell text-center px-8 py-4 ">{{ region.nom }}</div>
+      <div class="table-cell text-center px-8 py-4">{{ region.code }}</div>
+    </div>
+  {% endfor %}
+</div>
+
+<br>
+
+<div class="text-2xl">Departement:</div>
+<div class="table w-full mt-8">
+
+  <div class="table-row">
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4" >Nom</div>
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4">Code</div>
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4">Code Region</div>
+  </div>
+
+  {% for department in all_departments %}
+    <div class="table-row border hover:bg-blue-300">
+      <div class="table-cell text-center px-8 py-4 ">{{ department.nom }}</div>
+      <div class="table-cell text-center px-8 py-4">{{ department.code }}</div>
+      <div class="table-cell text-center px-8 py-4">{{ department.code }}</div>
+    </div>
+  {% endfor %}
+</div>
+
+<br>
+
+<div class="text-2xl">Ville:</div>
+<div class="table w-full mt-8">
+
+  <div class="table-row">
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4" >Nom</div>
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4">Code</div>
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4">Code Region</div>
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4" >Code Departement</div>
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4">Population</div>
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4">Surface</div>
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4">Location</div>
+    <div class="table-cell bg-blue-100 border text-center px-8 py-4">Codes Postaux</div>
+  </div>
+
+  {% for city in cities %}
+    <div class="table-row border hover:bg-blue-300">
+      <div class="table-cell text-center px-8 py-4 ">{{ city.nom }}</div>
+      <div class="table-cell text-center px-8 py-4">{{ city.code }}</div>
+      <div class="table-cell text-center px-8 py-4">{{ city.codeRegion }}</div>
+      <div class="table-cell text-center px-8 py-4 ">{{ city.codeDepartement }}</div>
+      <div class="table-cell text-center px-8 py-4">{{ city.population }}</div>
+      <div class="table-cell text-center px-8 py-4">{{ city.surface }}</div>
+      <div class="table-cell text-center px-8 py-4 ">{{ city.location }}</div>
+      <div class="table-cell text-center px-8 py-4">{{ city.codesPostaux }}</div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="text-center lex bg-blue-100 items-center " >
+
+  {% if cities.has_other_pages %}
+
+      {% if cities.has_previous %}
+
+          <a href="?page={{ cities.previous_page_number }} " class="hover:text-white"> <u>Previous</u></a>
+
+      {% endif %}
+
+      <span>page {{ cities.number }} of {{ cities.paginator.num_pages }}</span>
+
+      {% if cities.has_next %}
+
+          <a href="?page={{ cities.next_page_number }}" class="hover:text-white"> <u>Next</u> </a>
+
+      {% endif %}
+
+  {% endif %}
+
+</div>
+
+
+
+
+{% endblock %}
