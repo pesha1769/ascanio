@@ -6,9 +6,11 @@ Dans le cadre de son développement, un client nous a demandé de créer une API
 git clone git@github.com:pesha1769/ascanio.git
 cd ascanio/jaitrouve
 ```
-Docker is not fully set up and `docker-compose up -d --build` not working so far:(
-
-That is why we install all dependencies manually:
+Docker: 
+```
+docker-compose up -d --build
+```
+Or manually:
 ```
 python -m venv env
 pip install -r requirements.txt
