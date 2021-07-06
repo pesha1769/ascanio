@@ -60,7 +60,7 @@ python manage.py migrate && python manage.py runserver
 - [x] Modifier le endpoint pour qu’il envoie également le département et la région de la ville (la région sur le même niveau que département et non un sous-objet de département)
 - [x] Ajouter des interfaces simples via django (sans DRF)
 - [x] Bonus faire une recherche sur les 50 km d’un point géographique (endpoint avec valeur fixe, par exemple toutes les villes autour de Grenoble)
-- [ ] **Docker/Deployment**
+- [x] Docker
 
 
 
