@@ -6,11 +6,13 @@ Dans le cadre de son développement, un client nous a demandé de créer une API
 git clone git@github.com:pesha1769/ascanio.git
 cd ascanio/jaitrouve
 ```
-Docker: 
+### Docker (build and run on localhost): 
 ```
 docker-compose up -d --build
 ```
-Or manually:
+### Or set up manually:
+
+Create python environment and install necessary packages:
 ```
 python -m venv env
 pip install -r requirements.txt
@@ -44,13 +46,14 @@ And add an extension for this database. [Instruction](https://docs.djangoproject
 ```
 CREATE EXTENSION postgis;
 ```
-
-
-
-## Running locally:
+Migrate database and run application on localhost:
 ```
 python manage.py migrate && python manage.py runserver
 ```
+
+## Usage:
+1. Go to `http://127.0.0.1:8000/data/` and press the button `Update database` to get data from geo.api.gouv.fr.
+2. Then go to `http://127.0.0.1:8000/search/` to search cities in France.
 
 ## ToDo:
 - [x] Mise en place du projet Django / DjangoRest
